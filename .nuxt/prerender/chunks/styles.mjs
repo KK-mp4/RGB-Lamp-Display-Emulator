@@ -5,8 +5,8 @@ const styles = {
   entry: () => [tailwind],
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": () => import('./error-404-styles.85d96a7a.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": () => import('./error-500-styles.e3752200.mjs').then(interopDefault),
-  "layouts/default.vue": () => import('./default-styles.634a8ebc.mjs').then(interopDefault),
-  "pages/index.vue": () => import('./index-styles.d4edbf8d.mjs').then(interopDefault)
+  "pages/index.vue": () => import('./index-styles.d4edbf8d.mjs').then(interopDefault),
+  "layouts/default.vue": () => import('./default-styles.634a8ebc.mjs').then(interopDefault)
 };
 
 export { styles as default };
