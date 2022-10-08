@@ -1167,7 +1167,7 @@ const _routes = [
     children: [],
     meta,
     alias: [],
-    component: () => import('./index.5bbb9d0e.mjs').then((m) => m.default || m)
+    component: () => import('./index.615abcf4.mjs').then((m) => m.default || m)
   }
 ];
 const configRouterOptions = {};
@@ -1316,7 +1316,7 @@ const _sfc_main$1 = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = defineAsyncComponent(() => import('./error-component.383ce946.mjs').then((r) => r.default || r));
+    const ErrorComponent = defineAsyncComponent(() => import('./error-component.caba0f7a.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -1349,7 +1349,7 @@ _sfc_main$1.setup = (props, ctx) => {
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
 const layouts = {
-  default: defineAsyncComponent(() => import('./default.db7faa9b.mjs').then((m) => m.default || m))
+  default: defineAsyncComponent(() => import('./default.db3810a5.mjs').then((m) => m.default || m))
 };
 const __nuxt_component_0 = defineComponent({
   props: {

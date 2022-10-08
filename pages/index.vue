@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({ title: "Generator" });
 
-const packSize = ref("8x8");
+const packSize = ref("16x16");
 
 const src = ref("");
 async function Draw() {
@@ -149,7 +149,7 @@ async function UploadImg(event) {
       <option value="16x16">16x16</option>
     </select>
     <input class="block text-sm text-gray-400 rounded-lg border cursor-pointer focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400" type="file" accept=".png, .jpg" @change="UploadImg($event)">
-    <p class="mt-1 text-sm text-gray-300">PNG or JPG (512x512px max).</p>
+    <p class="mt-1 text-sm text-gray-300">PNG or JPG (512x512px max)</p>
     <div
       class="w-full h-full mt-5 flex justify-center"
       style="image-rendering: pixelated"
