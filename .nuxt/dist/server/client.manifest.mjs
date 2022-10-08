@@ -95,15 +95,15 @@ export default {
     "file": "entry.dac69770.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   },
-  "pages/index.css": {
-    "resourceType": "style",
-    "file": "index.5796f716.css",
-    "src": "pages/index.css"
-  },
   "layouts/default.css": {
     "resourceType": "style",
     "file": "default.5bbf61c5.css",
     "src": "layouts/default.css"
+  },
+  "pages/index.css": {
+    "resourceType": "style",
+    "file": "index.5796f716.css",
+    "src": "pages/index.css"
   },
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
     "resourceType": "style",
