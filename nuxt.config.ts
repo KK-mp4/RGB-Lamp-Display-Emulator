@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     injectPosition: 0,
     viewer: true,
   },
+  ssr: false,
   publicRuntimeConfig:{
     base:process.env.NODE_ENV == "production" ? "/RGB-Lamp-Display-Emulator/": "/"
   },

@@ -1,7 +1,6 @@
 import { createRenderer } from 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { eventHandler, getQuery, appendHeader } from 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/h3/dist/index.mjs';
 import { joinURL } from 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/vue/server-renderer/index.mjs';
 import { u as useNitroApp, a as useRuntimeConfig } from './nitro-prerenderer.mjs';
 import 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/node-fetch-native/dist/polyfill.mjs';
 import 'file://C:/WIP%20Projects/RGB-Lamp-Display-Emulator/node_modules/ohmyfetch/dist/node.mjs';
@@ -290,29 +289,6 @@ function publicAssetsURL(...path) {
 }
 
 const getClientManifest = () => import('./client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
-const getServerEntry = () => import('./server.mjs').then((r) => r.default || r);
-const getSSRStyles = () => import('./styles.mjs').then((r) => r.default || r);
-const getSSRRenderer = lazyCachedFunction(async () => {
-  const manifest = await getClientManifest();
-  if (!manifest) {
-    throw new Error("client.manifest is not available");
-  }
-  const createSSRApp = await getServerEntry();
-  if (!createSSRApp) {
-    throw new Error("Server bundle is not available");
-  }
-  const options = {
-    manifest,
-    renderToString: renderToString$1,
-    buildAssetsURL
-  };
-  const renderer = createRenderer(createSSRApp, options);
-  async function renderToString$1(input, context) {
-    const html = await renderToString(input, context);
-    return `<div id="__nuxt">${html}</div>`;
-  }
-  return renderer;
-});
 const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   const options = {
@@ -341,7 +317,6 @@ const getSPARenderer = lazyCachedFunction(async () => {
 });
 const PAYLOAD_CACHE = /* @__PURE__ */ new Map() ;
 const PAYLOAD_URL_RE = /\/_payload(\.[a-zA-Z0-9]+)?.js(\?.*)?$/;
-const PRERENDER_NO_SSR_ROUTES = /* @__PURE__ */ new Set(["/index.html", "/200.html", "/404.html"]);
 const renderer = defineRenderHandler(async (event) => {
   const ssrError = event.req.url?.startsWith("/__nuxt_error") ? getQuery(event) : null;
   let url = ssrError?.url || event.req.url;
@@ -359,7 +334,7 @@ const renderer = defineRenderHandler(async (event) => {
     req: event.req,
     res: event.res,
     runtimeConfig: useRuntimeConfig(),
-    noSSR: !!event.req.headers["x-nuxt-no-ssr"] || (PRERENDER_NO_SSR_ROUTES.has(url) ),
+    noSSR: !!true  ,
     error: !!ssrError,
     nuxt: void 0,
     payload: ssrError ? { error: ssrError } : {}
@@ -369,7 +344,7 @@ const renderer = defineRenderHandler(async (event) => {
   {
     ssrContext.payload.prerenderedAt = Date.now();
   }
-  const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
+  const renderer = await getSPARenderer() ;
   const _rendered = await renderer.renderToString(ssrContext).catch((err) => {
     if (!ssrError) {
       throw ssrContext.payload?.error || err;
@@ -394,7 +369,7 @@ const renderer = defineRenderHandler(async (event) => {
     PAYLOAD_CACHE.set(url, renderPayloadResponse(ssrContext));
   }
   const renderedMeta = await ssrContext.renderMeta?.() ?? {};
-  const inlinedStyles = await renderInlineStyles(ssrContext.modules ?? ssrContext._registeredComponents ?? []) ;
+  const inlinedStyles = "";
   const htmlContext = {
     htmlAttrs: normalizeChunks([renderedMeta.htmlAttrs]),
     head: normalizeChunks([
@@ -459,18 +434,6 @@ function renderHTMLDocument(html) {
 <head>${joinTags(html.head)}</head>
 <body ${joinAttrs(html.bodyAttrs)}>${joinTags(html.bodyPreprend)}${joinTags(html.body)}${joinTags(html.bodyAppend)}</body>
 </html>`;
-}
-async function renderInlineStyles(usedModules) {
-  const styleMap = await getSSRStyles();
-  const inlinedStyles = /* @__PURE__ */ new Set();
-  for (const mod of ["entry", ...usedModules]) {
-    if (mod in styleMap) {
-      for (const style of await styleMap[mod]()) {
-        inlinedStyles.add(`<style>${style}</style>`);
-      }
-    }
-  }
-  return Array.from(inlinedStyles).join("");
 }
 function renderPayloadResponse(ssrContext) {
   return {
