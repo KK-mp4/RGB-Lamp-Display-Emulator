@@ -41,37 +41,37 @@ async function Draw() {
 
   // Loading textures
   const R_Off = new Image();
-  R_Off.src = "/" + packSize.value + "/ROff.png";
+  R_Off.src = "./" + packSize.value + "/ROff.png";
   await new Promise((resolve) => {
     R_Off.onload = () => resolve(1);
   });
 
   const R_On = new Image();
-  R_On.src = "/" + packSize.value + "/ROn.png";
+  R_On.src = "./" + packSize.value + "/ROn.png";
   await new Promise((resolve) => {
     R_On.onload = () => resolve(1);
   });
 
   const G_Off = new Image();
-  G_Off.src = "/" + packSize.value + "/GOff.png";
+  G_Off.src = "./" + packSize.value + "/GOff.png";
   await new Promise((resolve) => {
     G_Off.onload = () => resolve(1);
   });
 
   const G_On = new Image();
-  G_On.src = "/" + packSize.value + "/GOn.png";
+  G_On.src = "./" + packSize.value + "/GOn.png";
   await new Promise((resolve) => {
     G_On.onload = () => resolve(1);
   });
 
   const B_Off = new Image();
-  B_Off.src = "/" + packSize.value + "/BOff.png";
+  B_Off.src = "./" + packSize.value + "/BOff.png";
   await new Promise((resolve) => {
     B_Off.onload = () => resolve(1);
   });
 
   const B_On = new Image();
-  B_On.src = "/" + packSize.value + "/BOn.png";
+  B_On.src = "./" + packSize.value + "/BOn.png";
   await new Promise((resolve) => {
     B_On.onload = () => resolve(1);
   });

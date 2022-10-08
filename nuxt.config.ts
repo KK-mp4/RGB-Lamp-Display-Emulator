@@ -1,8 +1,4 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-defineNuxtConfig({
-  ssr: false
-})
-
 export default defineNuxtConfig({
   // target: 'static',
   // router: {
