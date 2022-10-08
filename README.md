@@ -24,6 +24,8 @@ Here are some random output examples:
 8x8 / I had to try Minecraft itself to see how well we can emulate it's graphics in the future generations of in-game computers  
 ![image](https://user-images.githubusercontent.com/103208695/194705531-f4ccbd5d-8b83-45a8-b310-7f568fd0696c.png)
 
+![image](https://user-images.githubusercontent.com/103208695/194710711-376fd281-c195-4c9c-b162-991c603f6712.png)
+
 ## How to launch yourself using [Node.js](https://nodejs.org/en/) and [Visual Studio Code](https://code.visualstudio.com/download)
 
 ```bash
