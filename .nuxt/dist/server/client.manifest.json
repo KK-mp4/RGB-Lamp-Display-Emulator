@@ -2,7 +2,7 @@
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "entry.704f469c.js",
+    "file": "entry.21bb3bed.js",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -19,7 +19,7 @@
   "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "error-component.63d2b3b5.js",
+    "file": "error-component.18db20eb.js",
     "src": "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -33,7 +33,7 @@
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.02a27d45.js",
+    "file": "index.0709dc4f.js",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -48,7 +48,7 @@
   "layouts/default.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "default.a5b10bc5.js",
+    "file": "default.22819849.js",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -63,7 +63,7 @@
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-404.ddfe1529.js",
+    "file": "error-404.4f6c9124.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -78,7 +78,7 @@
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-500.b47c9cf6.js",
+    "file": "error-500.e81df29a.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -90,6 +90,16 @@
     "file": "error-500.e60962de.css",
     "resourceType": "style"
   },
+  "layouts/default.css": {
+    "resourceType": "style",
+    "file": "default.5bbf61c5.css",
+    "src": "layouts/default.css"
+  },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.e60962de.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+  },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
     "file": "entry.dac69770.css",
@@ -100,20 +110,10 @@
     "file": "index.5796f716.css",
     "src": "pages/index.css"
   },
-  "layouts/default.css": {
-    "resourceType": "style",
-    "file": "default.5bbf61c5.css",
-    "src": "layouts/default.css"
-  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.18ced855.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
-  },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.e60962de.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "node_modules/nuxt/dist/app/entry.mjs-css": {
     "file": "",
