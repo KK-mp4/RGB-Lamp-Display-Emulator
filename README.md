@@ -1,40 +1,30 @@
-# Minecraft [Redstone Lamp](https://minecraft.fandom.com/wiki/Redstone_Lamp) Display Emulator
-Website for converting images to Minecraft redstone lamps. Upload an image and each pixel based on its brightness **(0.2126\*R + 0.7152\*G + 0.0722\*B)** value will be converted to  on / off redstone lamp.  
-Todo:
-- add different dithering algorithms
-- add different binarization algorithms
-- add scaling algorithms
+# Minecraft RGB Redstone Lamp Display Emulator
+## Quick website for converting images to Minecraft redstone lamps with stained glass infront.
+Some time ago I experimented with making 8 color rgb display in Minecraft by putting stained glass infront of redstone lamps and it worked relatively well for 3x3 pixel size. Here is a demo version schematic download [link](https://cdn.discordapp.com/attachments/397060100008706048/1028267355110907955/RGB_Matrix_Display.schematic). Sinze it's pretty time consuming to test different images/pixel forms in Minecraft I made this tool.
 
-![screencapture-localhost-3000-2022-10-06-04_17_43](https://user-images.githubusercontent.com/103208695/194201556-68ab3f7d-e3b9-431b-8d80-c7361dacf09b.png)
+![2022-09-04_22 38 29](https://user-images.githubusercontent.com/103208695/194705099-b2578fe6-3bd6-40c1-b75e-20100308d249.png)  
 
-Since each pixel becomes 8x8 I limited size to 512x512px. Instead of using vanilla 16x16px redstone lamp texture I used 8x8px texture from [Rodrigo's](https://www.curseforge.com/minecraft/texture-packs/rodrigos-pack) texture pack. Here are some examples of it working, for input I took pixelarts from [sexypixelize](https://sexypixelize.newgrounds.com/art) and processed them:
+![2022-09-05_01 54 52](https://user-images.githubusercontent.com/103208695/194705067-bd1348ef-870b-459e-b0c8-d3c351e8531c.png)  
 
-![3](https://user-images.githubusercontent.com/103208695/194202792-630edade-718e-42b2-b785-cc631e2d5888.png)  
-Dithering algorithm: Jarvis-Judice  
-![3](https://user-images.githubusercontent.com/103208695/194202803-8e5cad46-6101-4e10-938d-e9f8c6df4d0a.png)
+You have 3 options what lamp texturepack to use, they are different sizes so you can choose size of a final image. 16x16 seems to be working best:
+- [4x4](https://www.planetminecraft.com/texture-pack/kapteyn-s-4x4-mania/) by kapteyn and glass by me
+- [8x8](https://rodrigo-al.jimdo.com/texture-packs/8x8-rodrigo-s-pack/) Rodrigo's Pack
+- 16x16 Default Minecraft 1.11-1.12 texture
 
-![1](https://user-images.githubusercontent.com/103208695/194202834-5bbb5ccb-f661-4310-90b4-7358e660d995.png)  
-Global binarization: threshold  
-![1](https://user-images.githubusercontent.com/103208695/194202845-a8d257b6-7b43-46a0-ad70-7822937b6ec9.png)
+Here are some random output examples:  
+16x16 / Art by [sexypixelize](https://sexypixelize.newgrounds.com/art)  
+![image](https://user-images.githubusercontent.com/103208695/194705516-e8768286-7eae-4963-9b6c-305885c5a9c2.png)
 
-![2](https://user-images.githubusercontent.com/103208695/194202859-43f3db9f-d3ad-45a5-9774-9ea33328f19f.png)  
-Dithering algorithm: Floyd-Steinberg  
-![2](https://user-images.githubusercontent.com/103208695/194202865-8637c622-0966-49c4-85fd-464fc9f19ab8.png)
+16x16 / Packman of course
+![image](https://user-images.githubusercontent.com/103208695/194705522-34fc296e-010b-4cf5-9734-e797755f16b3.png)
 
-![4](https://user-images.githubusercontent.com/103208695/194202874-6c1e9007-4b53-43fd-8ae2-c4382685e218.png)  
-Dithering algorithm: Bayer 8x8  
-![4](https://user-images.githubusercontent.com/103208695/194202881-9c59a910-6809-4984-a8f2-d97874b451cc.png)
+16x16 / Fruits by [CrystalOfLies](https://www.reddit.com/r/PixelArt/comments/aon3z2/oc_i_created_some_32x32_fruit_sprites_source_link/)
+![image](https://user-images.githubusercontent.com/103208695/194705527-6e24b2f9-7ae7-4d5a-8af4-f93023832a78.png)
 
-![5](https://user-images.githubusercontent.com/103208695/194202892-5d435c6f-624f-46e3-8a10-153df3bfc495.png)  
-Dithering algorithm: Jarvis-Judice  
-![5](https://user-images.githubusercontent.com/103208695/194202897-7aa7c6c0-e935-4364-924e-54b8b90231d9.png)
+8x8 / I had to try Minecraft itself to see how well we can emulate it's graphics in the future generations of in-game computers  
+![image](https://user-images.githubusercontent.com/103208695/194705531-f4ccbd5d-8b83-45a8-b310-7f568fd0696c.png)
 
-![6](https://user-images.githubusercontent.com/103208695/194202901-9fd1ca30-a230-4001-a270-b73e07cbbdbd.png)  
-Dithering algorithm: Jarvis-Judice  
-![6](https://user-images.githubusercontent.com/103208695/194202907-23fc6510-f9b6-4afb-aff4-b450c04a0da5.png)
-
-
-## How to launch using [Node.js](https://nodejs.org/en/) and [Visual Studio Code](https://code.visualstudio.com/download)
+## How to launch yourself using [Node.js](https://nodejs.org/en/) and [Visual Studio Code](https://code.visualstudio.com/download)
 
 ```bash
 # install yarn
