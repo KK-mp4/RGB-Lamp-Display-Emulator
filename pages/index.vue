@@ -8,9 +8,16 @@ const maxSize = ref(512); // Displays maximum size for image depending on textur
 let inputUrl; // DataURL of uploaded image
 let isLoading = ref(false); // Controls loading animation
 
+// Canvas needed for animated favicon
+let faviCanvas = document.createElement("canvas");
+faviCanvas.width = 16;
+faviCanvas.height = 16;
+let favictx = faviCanvas.getContext("2d");
+
 // Rendering function
 async function Draw() {
   const start = Date.now();
+  setLoadFavicon();
   isLoading.value = true;
 
   const img = new Image();
@@ -118,7 +125,38 @@ async function Draw() {
 
   src.value = canvas.toDataURL();
   isLoading.value = false;
+  setNormalFavicon();
   console.log(Date.now() - start + "ms - Calculation time");
+}
+
+// Sets favicon to normal rs lamps while it generates an image
+async function setLoadFavicon(){
+  const img = new Image();
+  img.src = "./faviconLoad.ico";
+  await new Promise((resolve) => {
+    img.onload = () => resolve(1);
+  });
+
+  favictx.drawImage(img, 0, 0, 16, 16);
+
+  let favicon = document.getElementById("favicon");
+  favicon.setAttribute("href", faviCanvas.toDataURL());
+	history.replaceState(null, null, window.location.hash == "#1" ? "#0" : "#1");
+}
+
+// Sets favicon to lit rs lamps
+async function setNormalFavicon() {
+  const img = new Image();
+  img.src = "./favicon.ico";
+  await new Promise((resolve) => {
+    img.onload = () => resolve(1);
+  });
+
+  favictx.drawImage(img, 0, 0, 16, 16);
+
+  let favicon = document.getElementById("favicon");
+  favicon.setAttribute("href", faviCanvas.toDataURL());
+	history.replaceState(null, null, window.location.hash == "#1" ? "#0" : "#1");
 }
 
 // Uploads image to DataURL
@@ -137,7 +175,7 @@ async function UploadImg(event) {
 }
 
 // Calls Draw function on resolution/dithering/threshold change
-async function ResolutionChane() {
+async function ResolutionChange() {
   if (textureResolution.value === "1x1") {
     textureSize = 1;
     maxSize.value = 8192;
@@ -170,7 +208,7 @@ async function ResolutionChane() {
     <p class="text-lg text-gray-300">RGB Lamp Display Emulator by KK</p>
     <a class="mb-5 text-xs text-blue-400 underline" href="https://github.com/KK-mp4/RGB-Lamp-Display-Emulator#readme" target="_blank">More info in GitHub</a>
     <p class="mb-1 text-sm text-gray-300">Lamp texture resolution:</p>
-    <select v-model="textureResolution" class="w-64 mb-5 rounded-lg border h-7 bg-gray-700 border-gray-600 text-gray-400" @change="ResolutionChane()">
+    <select v-model="textureResolution" class="w-64 mb-5 rounded-lg border h-7 bg-gray-700 border-gray-600 text-gray-400" @change="ResolutionChange()">
       <option value="1x1">1x1</option>
       <option value="2x2">2x2</option>
       <option value="4x4">4x4</option>

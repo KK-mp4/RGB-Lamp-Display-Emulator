@@ -2,7 +2,7 @@
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "entry.08619c34.js",
+    "file": "entry.e0736dac.js",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -20,7 +20,7 @@
   "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "error-component.4f875afb.js",
+    "file": "error-component.adc267d1.js",
     "src": "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -34,7 +34,7 @@
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.6aac661c.js",
+    "file": "index.5b9819ea.js",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -44,7 +44,7 @@
   "layouts/default.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "default.25b692d6.js",
+    "file": "default.d7dcd666.js",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -61,7 +61,7 @@
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-404.d726f3c6.js",
+    "file": "error-404.f1479049.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -78,7 +78,7 @@
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-500.e08bec40.js",
+    "file": "error-500.1283ccf2.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
