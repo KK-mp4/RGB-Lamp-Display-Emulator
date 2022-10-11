@@ -1,13 +1,18 @@
 <script setup lang="ts">
 useHead({ title: "Generator" });
 
-const textureResolution = ref("16x16");
-const src = ref("");
-let textureSize = 16;
-const maxSize = ref(512);
-let inputUrl;
+const textureResolution = ref("16x16"); // Lamp texture resolution
+const src = ref("");  // DataURL of processed image
+let textureSize = 16; // Lamp texture resolution
+const maxSize = ref(512); // Displays maximum size for image depending on texture size
+let inputUrl; // DataURL of uploaded image
+let isLoading = ref(false); // Controls loading animation
 
+// Rendering function
 async function Draw() {
+  const start = Date.now();
+  isLoading.value = true;
+
   const img = new Image();
   img.src = inputUrl;
   await new Promise((resolve) => {
@@ -17,6 +22,7 @@ async function Draw() {
   let imgWidth = img.width;
   let imgHeight = img.height;
 
+  // Limits input image to max size depending on selected rs lamp res
   if (imgWidth > 512) {
     imgWidth = 512;
   }
@@ -31,7 +37,7 @@ async function Draw() {
   const imgContext = imgCanvas.getContext("2d");
   imgContext.drawImage(img, 0, 0, img.width, img.height);
 
-  // Loading textures
+  // Loading of lamp textures
   const R_Off = new Image();
   R_Off.src = "./" + textureResolution.value + "/ROff.png";
   await new Promise((resolve) => {
@@ -73,6 +79,7 @@ async function Draw() {
   canvas.height = imgHeight * 3 * textureSize;
   const ctx = canvas.getContext("2d");
 
+  // Generation of output 
   for (let i = 0; i < imgHeight; i++) {
     for (let j = 0; j < imgWidth; j++) {
       const color = imgContext.getImageData(j, i, 1, 1).data;
@@ -110,8 +117,11 @@ async function Draw() {
   }
 
   src.value = canvas.toDataURL();
+  isLoading.value = false;
+  console.log(Date.now() - start + "ms - Calculation time");
 }
 
+// Uploads image to DataURL
 async function UploadImg(event) {
     if (event.target.files && event.target.files[0]) {
         let reader = new FileReader();
@@ -126,6 +136,7 @@ async function UploadImg(event) {
     }
 }
 
+// Calls Draw function on resolution/dithering/threshold change
 async function ResolutionChane() {
   if (textureResolution.value === "1x1") {
     textureSize = 1;
@@ -152,7 +163,6 @@ async function ResolutionChane() {
     Draw();
   }
 }
-
 </script>
 
 <template>
@@ -169,17 +179,9 @@ async function ResolutionChane() {
     </select>
     <p class="mb-1 text-sm text-gray-300">PNG or JPG ({{ maxSize }}x{{ maxSize }}px max)</p>
     <input class="block text-sm text-gray-400 rounded-lg border cursor-pointer focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400" type="file" accept=".png, .jpg" @change="UploadImg($event)">
-    <div
-      class="w-full h-full mt-5 flex justify-center"
-      style="image-rendering: pixelated"
-    >
+    <img v-if="isLoading" class="animate-spin h-7 w-7 mt-5" src="/load.png" />
+    <div class="w-full h-full mt-5 flex justify-center" style="image-rendering: pixelated">
       <img :src="src" class="w-[75%]" />
     </div>
   </div>
 </template>
-
-<style>
-#canvas {
-  border: 1px solid white;
-}
-</style>
