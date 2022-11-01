@@ -1,13 +1,21 @@
 <script setup lang="ts">
 const {public:{base}} = useRuntimeConfig()
 useHead({
-  link:[{
-    rel:"icon",
-    href:`${base}favicon.ico`,
-    type:"image/x-icon",
-    id: "favicon"
-  }]
-})
+  link: [
+    {
+      rel: "icon",
+      href: `${base}favicon.ico`,
+      type: "image/x-icon",
+      id: "favicon"
+    }
+  ],
+  htmlAttrs: {
+      lang: 'en'
+    },
+  meta: [
+    { name: 'description', content: 'Author: KK, Dithering algorithms and rgb redstone lamp display emilator' }
+  ],
+});
 </script>
 
 <template>

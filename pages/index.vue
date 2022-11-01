@@ -41,7 +41,7 @@ async function Draw() {
   const imgCanvas = document.createElement("canvas");
   imgCanvas.width = imgWidth;
   imgCanvas.height = imgHeight;
-  const imgContext = imgCanvas.getContext("2d");
+  const imgContext = imgCanvas.getContext("2d", { willReadFrequently: true });
   imgContext.drawImage(img, 0, 0, img.width, img.height);
 
   // Loading of lamp textures
@@ -86,12 +86,12 @@ async function Draw() {
   canvas.height = imgHeight * 3 * textureSize;
   const ctx = canvas.getContext("2d");
 
-  // Generation of output 
+  // Generation of output
+  const threshold = 128;
+  const imgRGBA = imgContext.getImageData(0, 0, imgWidth, imgHeight);
   for (let i = 0; i < imgHeight; i++) {
     for (let j = 0; j < imgWidth; j++) {
-      const color = imgContext.getImageData(j, i, 1, 1).data;
-
-      if (color[0] >= 128) {
+      if (imgRGBA.data[((i * imgWidth) + j) * 4] >= threshold) {
         ctx.drawImage(R_On, j * 3 * textureSize, i * 3 * textureSize);
         ctx.drawImage(R_On, j * 3 * textureSize, (i * 3 * textureSize) + textureSize);
         ctx.drawImage(R_On, j * 3 * textureSize, (i * 3 * textureSize) + textureSize * 2);
@@ -101,7 +101,7 @@ async function Draw() {
         ctx.drawImage(R_Off, j * 3 * textureSize, (i * 3 * textureSize) + textureSize * 2);
       }
 
-      if (color[1] >= 128) {
+      if (imgRGBA.data[(((i * imgWidth) + j) * 4) + 1] >= threshold) {
         ctx.drawImage(G_On, j * 3 * textureSize + textureSize, i * 3 * textureSize);
         ctx.drawImage(G_On, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize);
         ctx.drawImage(G_On, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize * 2);
@@ -111,7 +111,7 @@ async function Draw() {
         ctx.drawImage(G_Off, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize * 2);
       }
 
-      if (color[2] >= 128) {
+      if (imgRGBA.data[(((i * imgWidth) + j) * 4) + 2] >= threshold) {
         ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), i * 3 * textureSize);
         ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize);
         ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize * 2);
@@ -130,7 +130,7 @@ async function Draw() {
 }
 
 // Sets favicon to normal rs lamps while it generates an image
-async function setLoadFavicon(){
+async function setLoadFavicon() {
   const img = new Image();
   img.src = "./faviconLoad.ico";
   await new Promise((resolve) => {
@@ -206,7 +206,8 @@ async function ResolutionChange() {
 <template>
   <div class="flex justify-center flex-wrap pt-2 flex-col items-center">
     <p class="text-lg text-gray-300">RGB Lamp Display Emulator by KK</p>
-    <a class="mb-5 text-xs text-blue-400 underline" href="https://github.com/KK-mp4/RGB-Lamp-Display-Emulator#readme" target="_blank">More info in GitHub</a>
+    <a class="text-xs text-blue-400 underline" href="https://github.com/KK-mp4/RGB-Lamp-Display-Emulator#readme" target="_blank">More info in GitHub</a>
+    <a class="mb-5 text-xs text-blue-400 underline" href="https://kk-mp4.github.io/Lamp-Display-Emulator/" target="_blank" rel="noopener noreferrer">Monochrome 1 bit version</a>
     <p class="mb-1 text-sm text-gray-300">Lamp texture resolution:</p>
     <select v-model="textureResolution" class="w-64 mb-5 rounded-lg border h-7 bg-gray-700 border-gray-600 text-gray-400" @change="ResolutionChange()">
       <option value="1x1">1x1</option>
@@ -217,7 +218,7 @@ async function ResolutionChange() {
     </select>
     <p class="mb-1 text-sm text-gray-300">PNG or JPG ({{ maxSize }}x{{ maxSize }}px max)</p>
     <input class="block text-sm text-gray-400 rounded-lg border cursor-pointer focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400" type="file" accept=".png, .jpg" @change="UploadImg($event)">
-    <img v-if="isLoading" class="animate-spin h-7 w-7 mt-5" src="/load.png" />
+    <img v-if="isLoading" class="animate-spin h-7 w-7 top-52 absolute" src="/load.png" />
     <div class="w-full h-full mt-5 flex justify-center" style="image-rendering: pixelated">
       <img :src="src" class="w-[75%]" />
     </div>

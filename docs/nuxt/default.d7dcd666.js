@@ -1,1 +1,0 @@
-import{a as s,j as a,b as o,o as t,e as c,k as i}from"./entry.e0736dac.js";const _={class:"h-screen"},d=s({__name:"default",setup(l){const{public:{base:e}}=a();return o({link:[{rel:"icon",href:`${e}favicon.ico`,type:"image/x-icon",id:"favicon"}]}),(n,r)=>(t(),c("div",_,[i(n.$slots,"default")]))}});export{d as default};
