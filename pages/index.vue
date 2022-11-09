@@ -1,12 +1,12 @@
 <script setup lang="ts">
 useHead({ title: "Generator" });
 
-const textureResolution = ref("1x1"); // Lamp texture resolution
+const textureResolution = ref("16x16"); // Lamp texture resolution
 const src = ref("");  // DataURL of processed image
 let textureSize = 16; // Lamp texture resolution
 const maxSize = ref(512); // Displays maximum size for image depending on texture size
 let inputUrl; // DataURL of uploaded image
-const dithering = ref("Bayer 4x4");  // Dithering algorithm option
+const dithering = ref("Bayer 8x8");  // Dithering algorithm option
 const threshold = ref(255); // Threshold for binarization
 let isLoading = ref(false); // Controls loading animation
 const renderTime = ref(0);  // Time it took to process last image
@@ -83,31 +83,26 @@ async function Draw() {
   await new Promise((resolve) => {
     R_Off.onload = () => resolve(1);
   });
-
   const R_On = new Image();
   R_On.src = "./" + textureResolution.value + "/ROn.png";
   await new Promise((resolve) => {
     R_On.onload = () => resolve(1);
   });
-
   const G_Off = new Image();
   G_Off.src = "./" + textureResolution.value + "/GOff.png";
   await new Promise((resolve) => {
     G_Off.onload = () => resolve(1);
   });
-
   const G_On = new Image();
   G_On.src = "./" + textureResolution.value + "/GOn.png";
   await new Promise((resolve) => {
     G_On.onload = () => resolve(1);
   });
-
   const B_Off = new Image();
   B_Off.src = "./" + textureResolution.value + "/BOff.png";
   await new Promise((resolve) => {
     B_Off.onload = () => resolve(1);
   });
-
   const B_On = new Image();
   B_On.src = "./" + textureResolution.value + "/BOn.png";
   await new Promise((resolve) => {
@@ -118,39 +113,41 @@ async function Draw() {
   canvas.width = imgWidth * 3 * textureSize;
   canvas.height = imgHeight * 3 * textureSize;
   const ctx = canvas.getContext("2d");
-
+  
   // Generation of output
+  let x = 0;
+  let y = 0;
   if (renderAsLamps.value) {
     for (let i = 0; i < imgHeight; i++) {
       for (let j = 0; j < imgWidth; j++) {
+        x = j * 3 * textureSize;
+        y = i * 3 * textureSize;
         if (imgRGBA.data[((i * imgWidth) + j) * 4] === 255) {
-          ctx.drawImage(R_On, j * 3 * textureSize, i * 3 * textureSize);
-          ctx.drawImage(R_On, j * 3 * textureSize, (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(R_On, j * 3 * textureSize, (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(R_On, x, y);
+          ctx.drawImage(R_On, x, y + textureSize);
+          ctx.drawImage(R_On, x, y + textureSize * 2);
         } else {
-          ctx.drawImage(R_Off, j * 3 * textureSize, i * 3 * textureSize);
-          ctx.drawImage(R_Off, j * 3 * textureSize, (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(R_Off, j * 3 * textureSize, (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(R_Off, x, y);
+          ctx.drawImage(R_Off, x, y + textureSize);
+          ctx.drawImage(R_Off, x, y + textureSize * 2);
         }
-
         if (imgRGBA.data[(((i * imgWidth) + j) * 4) + 1] === 255) {
-          ctx.drawImage(G_On, j * 3 * textureSize + textureSize, i * 3 * textureSize);
-          ctx.drawImage(G_On, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(G_On, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(G_On, x + textureSize, y);
+          ctx.drawImage(G_On, x + textureSize, y + textureSize);
+          ctx.drawImage(G_On, x + textureSize, y + textureSize * 2);
         } else {
-          ctx.drawImage(G_Off, j * 3 * textureSize + textureSize, i * 3 * textureSize);
-          ctx.drawImage(G_Off, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(G_Off, j * 3 * textureSize + textureSize, (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(G_Off, x + textureSize, y);
+          ctx.drawImage(G_Off, x + textureSize, y + textureSize);
+          ctx.drawImage(G_Off, x + textureSize, y + textureSize * 2);
         }
-
         if (imgRGBA.data[(((i * imgWidth) + j) * 4) + 2] === 255) {
-          ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), i * 3 * textureSize);
-          ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(B_On, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(B_On, x + (textureSize * 2), y);
+          ctx.drawImage(B_On, x + (textureSize * 2), y + textureSize);
+          ctx.drawImage(B_On, x + (textureSize * 2), y + textureSize * 2);
         } else {
-          ctx.drawImage(B_Off, j * 3 * textureSize + (textureSize * 2), i * 3 * textureSize);
-          ctx.drawImage(B_Off, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize);
-          ctx.drawImage(B_Off, j * 3 * textureSize + (textureSize * 2), (i * 3 * textureSize) + textureSize * 2);
+          ctx.drawImage(B_Off, x + (textureSize * 2), y);
+          ctx.drawImage(B_Off, x + (textureSize * 2), y + textureSize);
+          ctx.drawImage(B_Off, x + (textureSize * 2), y + textureSize * 2);
         }
       }
     }
@@ -257,7 +254,7 @@ async function ResolutionChange() {
         <p class="mb-1 text-sm text-gray-300">PNG or JPG ({{ maxSize }}x{{ maxSize }}px max)</p>
         <input aria-label="Input for images to process" class="block text-sm text-gray-400 rounded-lg border cursor-pointer focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400" type="file" accept=".png, .jpg" @change="UploadImg($event)">
         <div class="mt-3">
-          <input aria-label="Render lamps?" v-model= "renderAsLamps" @change="ResolutionChange()" id="Apply lamp texture" type="checkbox" class="ml-7 w-3 h-3 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+          <input aria-label="Render lamps?" v-model= "renderAsLamps" @change="ResolutionChange()" id="Apply lamp texture" type="checkbox" class="w-3 h-3 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
           <label for="default-checkbox" class="ml-1 text-xs font-medium text-gray-300">Apply lamp texture</label>
         </div>
       </div>
