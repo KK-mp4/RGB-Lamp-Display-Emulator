@@ -15,6 +15,10 @@ declare global {
   const defineNuxtPlugin: typeof import('../../node_modules/nuxt/dist/app')['defineNuxtPlugin']
   const defineNuxtRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app')['defineNuxtRouteMiddleware']
   const definePageMeta: typeof import('../../node_modules/nuxt/dist/pages/runtime/composables')['definePageMeta']
+  const ditherBayer2x2: typeof import('../../composables/dither')['ditherBayer2x2']
+  const ditherBayer4x4: typeof import('../../composables/dither')['ditherBayer4x4']
+  const ditherBayer8x8: typeof import('../../composables/dither')['ditherBayer8x8']
+  const ditherYliluoma: typeof import('../../composables/dither')['ditherYliluoma']
   const effect: typeof import('vue')['effect']
   const effectScope: typeof import('vue')['effectScope']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
@@ -52,6 +56,7 @@ declare global {
   const preloadPayload: typeof import('../../node_modules/nuxt/dist/app')['preloadPayload']
   const provide: typeof import('vue')['provide']
   const proxyRefs: typeof import('vue')['proxyRefs']
+  const quantize: typeof import('../../composables/dither')['quantize']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
@@ -120,6 +125,10 @@ declare module '@vue/runtime-core' {
     readonly defineNuxtPlugin: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['defineNuxtPlugin']>
     readonly defineNuxtRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['defineNuxtRouteMiddleware']>
     readonly definePageMeta: UnwrapRef<typeof import('../../node_modules/nuxt/dist/pages/runtime/composables')['definePageMeta']>
+    readonly ditherBayer2x2: UnwrapRef<typeof import('../../composables/dither')['ditherBayer2x2']>
+    readonly ditherBayer4x4: UnwrapRef<typeof import('../../composables/dither')['ditherBayer4x4']>
+    readonly ditherBayer8x8: UnwrapRef<typeof import('../../composables/dither')['ditherBayer8x8']>
+    readonly ditherYliluoma: UnwrapRef<typeof import('../../composables/dither')['ditherYliluoma']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -157,6 +166,7 @@ declare module '@vue/runtime-core' {
     readonly preloadPayload: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['preloadPayload']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
+    readonly quantize: UnwrapRef<typeof import('../../composables/dither')['quantize']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>

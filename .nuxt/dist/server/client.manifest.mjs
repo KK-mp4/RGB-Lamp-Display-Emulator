@@ -2,7 +2,7 @@ export default {
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "entry.9f12a9b3.js",
+    "file": "entry.a79111cf.js",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -10,17 +10,17 @@ export default {
       "layouts/default.vue"
     ],
     "css": [
-      "entry.194dc6e4.css"
+      "entry.c9e38fc1.css"
     ]
   },
-  "entry.194dc6e4.css": {
-    "file": "entry.194dc6e4.css",
+  "entry.c9e38fc1.css": {
+    "file": "entry.c9e38fc1.css",
     "resourceType": "style"
   },
   "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "error-component.1e4b6e51.js",
+    "file": "error-component.1931f7d4.js",
     "src": "virtual:nuxt:C:/WIP Projects/RGB-Lamp-Display-Emulator/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -34,7 +34,7 @@ export default {
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.af140677.js",
+    "file": "index.53e0f88e.js",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -44,7 +44,7 @@ export default {
   "layouts/default.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "default.05ef9b1c.js",
+    "file": "default.c6e21836.js",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -61,7 +61,7 @@ export default {
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-404.055d9799.js",
+    "file": "error-404.3fdeb348.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -78,7 +78,7 @@ export default {
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-500.849d99e6.js",
+    "file": "error-500.c500aa9c.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -94,7 +94,7 @@ export default {
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
-    "file": "entry.194dc6e4.css",
+    "file": "entry.c9e38fc1.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   },
   "layouts/default.css": {

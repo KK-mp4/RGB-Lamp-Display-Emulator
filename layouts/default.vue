@@ -13,7 +13,7 @@ useHead({
       lang: 'en'
     },
   meta: [
-    { name: 'description', content: 'Author: KK, Dithering algorithms and rgb redstone lamp display emilator' }
+    { name: 'description', content: 'Author: KK, Dithering algorithms and rgb redstone lamp display emilator.' }
   ],
 });
 </script>

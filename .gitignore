@@ -2,3 +2,11 @@
 /.output
 /.nuxt
 /dist
+/.nuxt/dist
+/.nuxt/types
+/.nuxt/app.config.mjs
+/.nuxt/components.d.ts
+/.nuxt/imports.d.ts
+/.nuxt/nuxt.d.ts
+/.nuxt/nuxt.json
+/.nuxt/tsconfig.json
