@@ -22,6 +22,12 @@ Here are some random output examples:
 16x16 / No signal screen showing whole color palette  
 ![image](https://user-images.githubusercontent.com/103208695/194710711-376fd281-c195-4c9c-b162-991c603f6712.png)
 
+1x1 / "Bliss" by Charles O'Rear  
+![image](https://user-images.githubusercontent.com/103208695/234333832-8ab11527-4622-4d9e-bead-e24be88b764f.png)
+
+1x1 / "Four-Byte Burger" by Jack Haeger  
+![image](https://user-images.githubusercontent.com/103208695/234333890-3587ccf9-ca7c-4deb-a91b-0619a31d45b7.png)
+
 ## How to launch yourself using [Node.js](https://nodejs.org/en/) and [Visual Studio Code](https://code.visualstudio.com/download)
 
 ```bash
